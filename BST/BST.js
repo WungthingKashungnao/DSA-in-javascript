@@ -51,6 +51,20 @@ class BST {
     }
     return false;
   }
+
+  BFS() {
+    let currentNode = this.root;
+    let queue = [];
+    let results = [];
+    queue.push(currentNode);
+    while (queue.length) {
+      currentNode = queue.shift();
+      results.push(currentNode.value);
+      if (currentNode.left) queue.push(currentNode.left);
+      if (currentNode.right) queue.push(currentNode.right);
+    }
+    return results;
+  }
 }
 
 let myBST = new BST();
@@ -69,4 +83,6 @@ console.log(myBST.contains(27));
 console.log("\nBST Contains 17:");
 console.log(myBST.contains(17));
 
-console.log(JSON.stringify(myBST, null, 2));
+// console.log(JSON.stringify(myBST, null, 2));
+console.log(myBST);
+console.log(myBST.BFS());
