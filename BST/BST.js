@@ -65,6 +65,39 @@ class BST {
     }
     return results;
   }
+
+  DFSPreOrder() {
+    let results = [];
+    function traverse(currentNode) {
+      results.push(currentNode.value);
+      if (currentNode.left) traverse(currentNode.left);
+      if (currentNode.right) traverse(currentNode.right);
+    }
+    traverse(this.root);
+    return results;
+  }
+
+  DFSPostOrder() {
+    let results = [];
+    function traverse(currentNode) {
+      if (currentNode.left) traverse(currentNode.left);
+      if (currentNode.right) traverse(currentNode.right);
+      results.push(currentNode.value);
+    }
+    traverse(this.root);
+    return results;
+  }
+
+  DFSInOrder() {
+    let results = [];
+    function traverse(currentNode) {
+      if (currentNode.left) traverse(currentNode.left);
+      results.push(currentNode.value);
+      if (currentNode.right) traverse(currentNode.right);
+    }
+    traverse(this.root);
+    return results;
+  }
 }
 
 let myBST = new BST();
@@ -84,5 +117,11 @@ console.log("\nBST Contains 17:");
 console.log(myBST.contains(17));
 
 // console.log(JSON.stringify(myBST, null, 2));
-console.log(myBST);
+console.log("BFS algo");
 console.log(myBST.BFS());
+console.log("DFS Preorder algo");
+console.log(myBST.DFSPreOrder());
+console.log("DFS Postorder algo");
+console.log(myBST.DFSPostOrder());
+console.log("DFS Inorder algo");
+console.log(myBST.DFSInOrder());
